@@ -1,0 +1,21 @@
+<div *ngIf="userData && aranzman">
+    <div *ngIf="aranzman">
+        <h2>Aranzmani</h2>
+        <ul class="karta usluga">
+            <li *ngFor="let item of aranzman.$values" >
+                <div class="karta-card"   *ngIf="userData.id == item.KupacId" >
+                    <p >Cena: {{ item.Cena}}</p>
+                    <p>Kupio: {{ item.Kupac?.FirstName    }}</p>
+                    <p>Hotel: {{ item.Hotel?.Ime    }}</p>
+                    <p>Hotel: {{ item.DatumPR    }}</p>
+                <button class="btn btn-primary" (click)="checkExpiredReservations(item.HotelId)">Check</button>
+                    
+
+
+
+    
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>

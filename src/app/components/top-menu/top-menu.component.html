@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <span routerLink="/home" >touriST</span>
+    <span class="spacer"></span>
+    <button  class="btn btn-primary" routerLink="/profile">Profile</button>
+    <button  class="btn btn-primary" routerLink="/mojekarte">Moje Karte</button>
+    <button  class="btn btn-primary" routerLink="/mojiaranzmani">Moji Aranzmani</button>
+    <button  class="btn btn-primary" routerLink="/mojeusluge">Moja Usluga</button>
+
+
+
+<div *ngIf="userData && userData.zaposleni === 'True'" >
+    
+    <button  class="btn btn-primary" routerLink="/aranzman">Aranzmani</button>
+</div>
+    <button class="btn btn-primary" (click)="logOut()">Log Out</button>
+    <!-- Add more buttons for other components/pages -->
+  </mat-toolbar>
+  

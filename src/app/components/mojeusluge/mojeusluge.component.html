@@ -1,0 +1,20 @@
+
+
+<div *ngIf="usluga ">
+    <h2>Moje usluge</h2>
+    <ul class="karta usluga">
+        <li *ngFor="let item of usluga.$values">
+            <div class="karta-card"*ngIf="item.UslugaId == userData.id">
+                <p>Ime: {{ item.Naziv}}</p>
+                <p>Web: {{ item.Destinacija}}</p>
+                <p>Email: {{ item.Hotel?.Ime}}</p>
+                <p>ID: {{ item.HotelId}}</p>
+                <p>Kapacitet: {{ item.BrojMesta}}</p>
+                <button class="btn btn-primary" (click)="checkExpiredReservations(item.UslugaId)">Check</button>
+                   
+                <!-- Add other properties as needed -->
+            </div>
+        </li>
+    </ul>
+</div>
+<button class="btn btn-primary" routerLink="/kreirajuslugu">Kreiraj uslugu</button>

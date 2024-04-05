@@ -1,0 +1,73 @@
+<div class="cont">
+
+<div *ngIf="uslugeHotela">
+    <h2>Usluge Hotela</h2>
+    <ul class="karta usluga ">
+        <li *ngFor="let item of uslugeHotela.$values" class="usluga"> 
+            <div class="karta-card">
+                <p>ID: {{ item?.UslugHotelaId }}</p>
+                <p>Dorucak: {{ item.Dorucak ? 'Da' : 'Ne' }}</p>
+                <p>Pansion: {{ item.Pansion ? 'Da' : 'Ne' }}</p>
+                <p>Polupansion: {{ item.Polupansion ? 'Da' : 'Ne' }}</p>
+                <p>Ime Hotela: {{ item.Hotel?.Ime }}</p>
+                <div *ngIf="userData && userData.zaposleni === 'True'" >
+                <select [(ngModel)]="item.selectedHotelId">
+                    <option *ngFor="let hotel of hotel.$values" [value]="hotel.HotelId">{{ hotel.Ime }}</option>
+                </select>
+                <button class="btn btn-primary boja" (click)="assignHotelToUslugaHotel(item.UslugHotelaId, item.selectedHotelId)">Assign Hotel</button>
+                <button class="btn btn-primary boja" (click)="deleteUslugaHotel(item.UslugHotelaId)">Delete</button>
+
+                <!-- Add other properties as needed -->
+            </div></div>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="hotel">
+    <h2>Hoteli</h2>
+    <ul class="karta usluga">
+        <li *ngFor="let item of hotel.$values">
+            <div class="karta-card">
+                <p>Ime: {{ item.Ime}}</p>
+                <p>Web: {{ item.Web}}</p>
+                <p>Email: {{ item.Email}}</p>
+                <p>ID: {{ item.HotelId}}</p>
+                <p>Kapacitet: {{ item.BrojMesta}}</p>
+
+                <div *ngIf="userData && userData.zaposleni === 'True'" >
+                   
+                <button class="btn btn-primary boja" (click)="deleteHotel(item.HotelId)">Delete</button>
+                <!-- Add other properties as needed -->
+            </div></div>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="aranzman">
+    <h2>Aranzmani</h2>
+    <ul class="karta usluga">
+        <li *ngFor="let item of aranzman.$values">
+            <div class="karta-card">
+                <p>Cena: {{ item.Cena}}</p>
+                <p>Kupac: {{ item.Kupac?.FirstName}}</p>
+                <p>Destinacija: {{ item.Destinacija}}</p>
+                <p>Hotel: {{ item.Hotel?.Ime}}</p>
+                <p>Hotel: {{ item.DatumPR | date:'dd.MM.yyyy HH:mm:ss'   }}</p>
+
+                
+
+                <select [(ngModel)]="item.selectedHotelId">
+                    <option *ngFor="let hotel of hotel.$values" [value]="hotel.HotelId">{{ hotel.Ime }}</option>
+                </select>   
+                <div *ngIf="userData && userData.zaposleni === 'True'" >
+                <button class="btn btn-primary" (click)="assignHotelToAranzman(item.AranzmanId, item.selectedHotelId)">Assign Hotel</button>
+                <button class="btn btn-primary boja" (click)="deleteAranzman(item.AranzmanId)">Delete</button>
+                <button class="btn btn-primary"  [ngClass]="{ 'btn-primary': !item.KupacId, 'boja': item.KupacId }"  (click)="kupiAranzman(item.AranzmanId, userData.id) ">  {{ item.KupacId ? 'Kupljeno' : 'Kupi' }}</button>
+
+                <!-- Add other properties as needed -->
+            </div></div>
+        </li>
+    </ul>
+</div>
+<button routerLink="/create" class="btn btn-primary" >Kreiraj</button>
+</div>

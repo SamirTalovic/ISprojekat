@@ -1,0 +1,73 @@
+<div class="con">
+    <div *ngIf="userData" class="user-info-container">
+      <div class="user-info-card">
+        <p>ID: {{ userData.id }}</p>
+        <p>First Name: {{ userData.firstname }}</p>
+        <p>Last Name: {{ userData.lastname }}</p>
+      </div>
+      <div class="user-info-card">
+        <p>Email: {{ userData.email }}</p>
+        <p>Mobile: {{ userData.mobile }}</p>
+        <p>Gender: {{ userData.zaposleni }}</p>
+        <p>Aranzman ID: {{ userData.aranzmanid }}</p>
+      </div>
+    </div>
+  
+    <div *ngIf="userData && userData.zaposleni === 'True'" class="user-info-container">
+
+  
+      <div *ngIf="filijale">
+        <h2>Moja Filijala</h2>
+        <ul>
+          <li *ngFor="let filijala of filijale" class="karta">
+            <div class="karta-card">
+              <p>ID: {{ filijala.filijalaId }}</p>
+              <p>Maticni broj: {{ filijala.mBroj }}</p>
+              <p>Menadzer: {{ filijala.menadzer }}</p>
+              <p>Email: {{ filijala.email }}</p>
+              <p>Web: {{ filijala.web }}</p>
+              <p>Adresa: {{ filijala.adresa }}</p>
+              <p>Sediste: {{ filijala.sediste }}</p>
+              <p>Naziv: {{ filijala.naziv }}</p>
+              <p>Telefon: {{ filijala.telefon }}</p>
+              <p>Zaposleni: {{ filijala.zaposleni }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>Kreiraj novu kartu</h2>
+        <form class="new-karta-form" (ngSubmit)="createKarta()">
+          <div class="form-group">
+            <label for="cena">Cena:</label>
+            <input type="number" id="cena" [(ngModel)]="novaKartaData.cena" name="cena" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="nacinPlacanja">Način plaćanja:</label>
+            <select id="nacinPlacanja" [(ngModel)]="novaKartaData.nacinPlacanja" name="nacinPlacanja" required>
+              <option value="kartica">Kartica</option>
+              <option value="keš">Keš</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="datum">Datum:</label>
+            <input type="datetime-local" id="datum" [(ngModel)]="novaKartaData.datum" name="datum" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="destinacija">Destinacija:</label>
+            <input type="text" id="destinacija" [(ngModel)]="novaKartaData.destinacija" name="destinacija" required>
+          </div>
+          <div class="form-group">
+            <label for="destinacija">Kolicina:</label>
+            <input type="text" id="destinacija" [(ngModel)]="novaKartaData.kolicina" name="destinacija" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Kreiraj kartu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

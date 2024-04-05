@@ -1,0 +1,37 @@
+<form  [formGroup]="loginForm" (ngSubmit)="loginSubmited()" class="border p-3 rounded-3">
+    <div class="row g-0">
+        <div class="col text-center p-2  mb-3  bg-light">
+            <span class="fs-3">Login</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+            <div class="form-text  text-danger" *ngIf="Email.errors?.['required'] && Email.touched">Email is required</div>
+            <div class="form-text  text-danger" *ngIf="Email.errors?.['email'] && Email.touched">You should use email form</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password"formControlName="pwd">
+            <div class="form-text  text-danger" *ngIf="PWD.errors?.['required'] && PWD.touched">Password is required</div>
+            <div class="form-text  text-danger" *ngIf="PWD.errors?.['minlength'] || PWD.errors?.['maxlength'] && PWD.touched">Password should be between 6 and 15 chars</div>
+
+           
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="d-grid">
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mt-3">
+            <span class="me-2">Dont have account yet?</span><a routerLink="/register">Register</a>
+        </div>
+    </div>
+</form>

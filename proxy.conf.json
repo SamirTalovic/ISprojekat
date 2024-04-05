@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "http://samirtal-001-site1.ktempurl.com",
+      "secure": false,
+      "changeOrigin": true,
+      "auth": "11170975:60-dayfreetrial"
+    }
+  }
+  

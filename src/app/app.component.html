@@ -1,0 +1,9 @@
+<!-- app.component.html -->
+<router-outlet></router-outlet>
+<app-top-menu></app-top-menu>
+<div class="container">
+<router-outlet></router-outlet>
+</div>
+<div *ngIf="userData && userData.zaposleni !== 'True'" >
+<app-footer></app-footer>
+</div>

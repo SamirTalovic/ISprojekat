@@ -1,0 +1,21 @@
+<div *ngIf="hotel">
+    <h2>Hoteli sa željenom destinacijom</h2>
+    <ul class="karta usluga">
+        <li *ngFor="let item of hotel.$values">
+            <div class="karta-card" *ngIf="item.Lokacija === destinacija">
+                <p>Ime: {{ item.Ime}}</p>
+                <p>Web: {{ item.Web}}</p>
+                <p>Email: {{ item.Email}}</p>
+                <p>ID: {{ item.HotelId}}</p>
+                <p>Kapacitet: {{ item.BrojMesta}}</p>
+                <label for="vremeP">Vreme Početka:</label>
+                <input type="datetime-local" [(ngModel)]="item.vremeP" name="vremeP" id="vremeP" required>
+                <label for="vremeZ">Vreme Završetka:</label>
+                <input type="datetime-local" [(ngModel)]="item.vremeZ" name="vremeZ" id="vremeZ" required>
+                <button class="btn btn-primary" (click)="addUslugaToHotel(uslugaId, item.HotelId, item.vremeP, item.vremeZ)">Choose hotel</button>
+            </div>
+        </li>
+    </ul>
+</div>
+<button  class="btn btn-primary" (click)="kupiKartu(uslugaId, userData.id)">Kupi</button>
+

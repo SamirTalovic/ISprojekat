@@ -1,0 +1,43 @@
+<div *ngIf="userData && karte">
+    <div *ngIf="karte">
+        <h2>Karte</h2>
+        <ul class="karta usluga">
+            <li *ngFor="let karta of karte.$values">
+                <div class="karta-card "  >
+                    <p class="nono">userData.id: {{ userData.id }}</p>
+                    <p class="nono">karta.korisnikKupacId: {{ karta.korisnikKupacId }}</p>
+                    <p>ID: {{ karta.KartaId }}</p>
+                    <p>Cena: {{ karta.Cena }}</p>
+                    <p >Nacin placanja: {{ karta.nacinPlacanja }}</p>
+                    <p>Datum: {{ karta.datum  | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+                    <p>Destinacija: {{ karta.destinacija }}</p>
+                    <div *ngIf="userData && userData.zaposleni === 'True'" >
+                      <button class="btn btn-primary boja" (click)="deleteHotel(karta.KartaId)">Delete</button>
+</div>
+                    <button  class="btn btn-primary"  [ngClass]="{ 'btn-primary': !karta.KorisnikKupacId, 'boja': karta.KorisnikKupacId }" (click)="kupiKartu(karta.KartaId, userData.id)">{{ karta.KorisnikKupacId ? 'Kupljeno' : 'Kupi' }}</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div *ngIf="userData && aranzman">
+<div *ngIf="aranzman">
+    <h2>Aranzmani</h2>
+    <ul class="karta usluga">
+        <li *ngFor="let item of aranzman.$values" >
+            <div class="karta-card"  >
+                <p >Cena: {{ item.Cena}}</p>
+                <p>Kupio: {{ item.Kupac?.FirstName    }}</p>
+
+                
+                <button class="btn btn-primary"  [ngClass]="{ 'btn-primary': !item.KupacId, 'boja': item.KupacId }"  (click)="kupiAranzman(item.AranzmanId, userData.id) ">  {{ item.KupacId ? 'Kupljeno' : 'Kupi' }}</button>
+
+                <!-- Add other properties as needed -->
+           </div>
+        </li>
+    </ul>
+</div>
+</div>
+
+
+  

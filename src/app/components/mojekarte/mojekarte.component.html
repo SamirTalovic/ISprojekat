@@ -1,0 +1,19 @@
+
+<div *ngIf="userData && karte">
+    <div *ngIf="karte">
+        <h2>Karte</h2>
+        <ul class="karta">
+            <li *ngFor="let karta of karte.$values">
+                <div class="karta-card"  *ngIf="userData.kupljenaid == karta.KartaId" >
+                    <p class="nono">userData.id: {{ userData.id }}</p>
+                    <p class="nono">karta.korisnikKupacId: {{ karta.KorisnikKupacId }}</p>
+                    <p>ID: {{ karta.KartaId }}</p>
+                    <p>Cena: {{ karta.Cena }}</p>
+                    <p >Nacin placanja: {{ karta.NacinPlacanja }}</p>
+                    <p>Datum: {{ karta.Datum  | date:'dd.MM.yyyy HH:mm:ss'   }}</p>
+                    <p>Destinacija: {{ karta.Destinacija }}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

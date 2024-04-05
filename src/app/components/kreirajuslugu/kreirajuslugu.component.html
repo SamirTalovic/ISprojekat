@@ -1,0 +1,11 @@
+<form (ngSubmit)="createUsluga()">
+    <h2>Kreiraj Uslugu</h2>
+    <label>Naziv:</label>
+    <input type="text" [(ngModel)]="novaUsluga.naziv" name="naziv" required>
+    <label>Destinacija:</label>
+    <input type="text" [(ngModel)]="novaUsluga.destinacija" name="destinacija" required>
+  
+  
+    <button type="submit">Kreiraj Uslugu</button>
+  </form>
+  

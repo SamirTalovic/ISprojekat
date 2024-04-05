@@ -1,0 +1,65 @@
+<div class="cont">
+    <form  (ngSubmit)="createUslugeHotela()">
+        <h2>Kreiraj Usluge Hotela</h2>
+        <label>Doručak:</label>
+        <input type="checkbox" [(ngModel)]="uslugeHotela.dorucak" name="dorucak">
+        
+        <label>Pansion:</label>
+        <input type="checkbox" [(ngModel)]="uslugeHotela.pansion" name="pansion"
+               (change)="checkPansion()">
+        
+        <label>Polupansion:</label>
+        <input type="checkbox" [(ngModel)]="uslugeHotela.polupansion" name="polupansion"
+               (change)="checkPolupansion()">
+        
+        <label>Cena:</label>
+        <input type="number" [(ngModel)]="uslugeHotela.cena" name="cena" required>
+        
+        <button type="submit">Kreiraj Usluge Hotela</button>
+    </form>
+<form (ngSubmit)="createHotel()">
+    <h2>Kreiraj Hotel</h2>
+    <label>Web:</label>
+    <input type="text" [(ngModel)]="hotel.web" name="cena" required>
+    
+    <label>Email:</label>
+    <input type="text" [(ngModel)]="hotel.email" name="nacinPlacanja" required>
+    
+    <label>Ime:</label>
+    <input type="text" [(ngModel)]="hotel.ime" name="datum" required>
+    
+    <label>Lokacija:</label>
+    <input type="text" [(ngModel)]="hotel.lokacija" name="destinacija" required>
+    <label>Kategorija:</label>
+    <input type="text" [(ngModel)]="hotel.kategorija" name="destinacija" required>
+    <label>Kapacitet:</label>
+    <input type="number" [(ngModel)]="hotel.brojmesta" name="destinacija" required>
+    
+    <button type="submit">Kreiraj Hotel</button>
+</form>
+<form (ngSubmit)="createUsluga()">
+    <h2>Kreiraj Uslugu</h2>
+    <label>Naziv:</label>
+    <input type="text" [(ngModel)]="novaUsluga.naziv" name="cena" required>
+    
+    <button type="submit">Kreiraj Uslugu</button>
+</form>
+<form (ngSubmit)="createAranzman()">
+    <h2>Kreiraj Aranzman</h2>
+    <label>Cena:</label>
+    <input type="number" [(ngModel)]="noviAranzman.cena" name="cena" required>
+    <label>Nacin Placanja:</label>
+    <select id="nacinPlacanja" [(ngModel)]="noviAranzman.nacinP" name="nacinPlacanja" required>
+        <option value="kartica">Kartica</option>
+        <option value="keš">Keš</option>
+      </select>
+    <label>Destinacija:</label>
+    <input type="text" [(ngModel)]="noviAranzman.destinacija" name="cena" required>
+    <label>Vreme Pocetka:</label>
+    <input type="datetime-local" [(ngModel)]="noviAranzman.vremeP" name="nacinPlacanja" required>
+    <label>Vreme Zavrsetka:</label>
+    <input type="datetime-local" [(ngModel)]="noviAranzman.vremeZ" name="nacinPlacanja" required>
+    <button type="submit">Kreiraj Aranzman</button>
+</form>
+<button class="btn btn-primary" routerLink="/aranzman">Nazad</button>
+</div>
